@@ -139,7 +139,7 @@ try:
 
         print(f"Температура в {capital_name}: {temperature}  Celsius ")
 except:
-        print("Error:", response.status_code)
+        sys.exit("Error:", response.status_code)
 
 
 
