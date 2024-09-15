@@ -31,20 +31,20 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
 #1 Ввод страны
-#country_name = "Japan"
-country_name_ru = str(input('Введите название страны на русском, например Япония: '))
+country_name = "Australia"
+#country_name_ru = str(input('Введите название страны на русском, например Япония: '))
 
 #перевод на русский, если использовать country_name_ru
 # https://dev.to/kalebu/how-to-do-language-translation-in-python-1ic6
 # pip install goslate
 import sys
 
-try:
-        import goslate
-        gs = goslate.Goslate()
-        country_name = gs.translate(country_name_ru, 'en')
-except :
-        sys.exit("Запрос на перевод с русского на английский вернул HTTP Error 429: Too Many Requests")
+# try:
+#         import goslate
+#         gs = goslate.Goslate()
+#         country_name = gs.translate(country_name_ru, 'en')
+# except :
+#         sys.exit("Запрос на перевод с русского на английский вернул HTTP Error 429: Too Many Requests")
 
 
 #print(country_name )
@@ -93,8 +93,9 @@ else:
 #country = CountryInfo(country_name)
 
 cur_cer = find_capital.currencies()
-cur_cer1 = str(cur_cer)[:-2][-3:]
-
+cur_cer1 = ''.join(cur_cer) #из массива в строку
+#cur_cer1 = f'"{cur_cer0}"'
+print(cur_cer1)
 url_currency = "https://www.cbr-xml-daily.ru/daily_json.js"
 
 resp = requests.get(url_currency, verify=False)
